@@ -1,0 +1,17 @@
+The following CSS code snippet demonstrates an unusual issue related to the specificity of CSS selectors and the cascading order.  The unexpected outcome is that the "color: green;" rule is not applied to the paragraph element even though it appears to be more specific.
+
+```css
+.container p {
+  color: blue; /*This style is applied unexpectedly*/
+}
+
+p {
+  color: red; /*This style is applied unexpectedly*/
+}
+
+.container .container p {
+  color: green; /*This style should be applied, but isn't */
+}
+```
+
+This happens because the browser calculates specificity,  and in this instance,  `.container p` has the same specificity as `p`. The latter `p` selector is then applied because it is defined later in the CSS file (cascading order).
